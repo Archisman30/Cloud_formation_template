@@ -1,8 +1,8 @@
-Parameters:
+Parameters:   // thats how we create the variabels
   AMI:
     Type: String
     Description: custom AMI for web server
-    Default: ami-05db93d568bbc05ce
+    Default: ami-05db93d568bbc05ce //giving the default value to the variable
   InstanceType:
     Type: String
     Description: Test Instance Type
@@ -33,7 +33,7 @@ Resources:
     Type: AWS::EC2::VPCGatewayAttachment
     Properties:
       VpcId: !Ref VPC
-      InternetGatewayId: !Ref InternetGateway
+      InternetGatewayId: !Ref InternetGateway  // getting the reference from the previous resources (very important you you want to make the code dynamic)
 
 
   SubnetA:
@@ -41,7 +41,7 @@ Resources:
     Properties:
       VpcId: !Ref VPC
       CidrBlock: 10.0.1.0/24
-      AvailabilityZone: !Select   [  0,  !GetAZs  ]
+      AvailabilityZone: !Select   [  0,  !GetAZs  ]  // special function for getting the AZ'S dynamically
       Tags:
       - Key: Name
         Value: mysubnetlab1
